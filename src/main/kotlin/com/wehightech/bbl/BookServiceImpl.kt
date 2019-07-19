@@ -7,8 +7,8 @@ import reactor.core.publisher.Mono
 @Service
 class BookServiceImpl(val bookRepository: BookRepository): BookService {
 
-    override fun create(e: Book) {
-        bookRepository!!.save(e).subscribe()
+    override fun create(book: Book) {
+        bookRepository!!.save(book).subscribe()
     }
 
     override fun findById(id: Int): Mono<Book> {
@@ -23,8 +23,8 @@ class BookServiceImpl(val bookRepository: BookRepository): BookService {
         return bookRepository!!.findAll()
     }
 
-    override fun update(e: Book): Mono<Book> {
-        return bookRepository!!.save(e)
+    override fun update(book: Book): Mono<Book> {
+        return bookRepository!!.save(book)
     }
 
     override fun delete(id: Int): Mono<Void> {
