@@ -6,7 +6,7 @@ import reactor.core.publisher.Flux
 
 
 interface BookService {
-    fun create(book: Book)
+    fun create(book: Mono<Book>): Mono<Void>
 
     fun findById(id: Int): Mono<Book>
 
@@ -14,7 +14,7 @@ interface BookService {
 
     fun findAll(): Flux<Book>
 
-    fun update(book: Book): Mono<Book>
+    //fun update(book: Mono<Book>): Mono<Book>
 
     fun delete(id: Int): Mono<Void>
 }

@@ -7,9 +7,20 @@ import reactor.core.publisher.Mono
 @Service
 class BookServiceImpl(val bookRepository: BookRepository): BookService {
 
-    override fun create(book: Book) {
-        bookRepository!!.save(book).subscribe()
+    override fun create(book: Mono<Book>): Mono<Void> {
+        return book.doOnNext{
+            bookRepository.save(it)
+        }
+        .thenEmpty(Mono.empty())
     }
+
+    /*override fun create(book: Mono<Book>): Mono<Book>{
+
+            return bookRepository.save(book)
+
+    }*/
+
+
 
     override fun findById(id: Int): Mono<Book> {
         return bookRepository!!.findById(id)
@@ -20,12 +31,15 @@ class BookServiceImpl(val bookRepository: BookRepository): BookService {
     }
 
     override fun findAll(): Flux<Book> {
-        return bookRepository!!.findAll()
+       return bookRepository.findAll()
     }
 
-    override fun update(book: Book): Mono<Book> {
-        return bookRepository!!.save(book)
-    }
+    /*override fun update(book: Mono<Book>): Mono<Book> {
+        return book.doOnNext{
+             bookRepository.save(it)
+        }.thenReturn()
+
+    }*/
 
     override fun delete(id: Int): Mono<Void> {
         return bookRepository!!.deleteById(id)

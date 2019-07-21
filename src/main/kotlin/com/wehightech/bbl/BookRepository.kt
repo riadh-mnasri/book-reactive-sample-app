@@ -1,8 +1,8 @@
 package com.wehightech.bbl
 
 import org.springframework.data.mongodb.repository.Query
-import reactor.core.publisher.Flux
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository
+import reactor.core.publisher.Flux
 
 
 interface BookRepository : ReactiveMongoRepository<Book, Int> {
