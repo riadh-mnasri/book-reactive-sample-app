@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 
 
 @SpringBootApplication
-class WebfluxFunctionalApp
+class ReactiveKotlinApplication
 
 fun main(args: Array<String>) {
-    SpringApplication.run(WebfluxFunctionalApp::class.java, *args)
+    SpringApplication.run(ReactiveKotlinApplication::class.java, *args)
 }
