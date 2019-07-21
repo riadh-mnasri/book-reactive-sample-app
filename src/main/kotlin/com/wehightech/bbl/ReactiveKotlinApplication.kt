@@ -1,12 +1,11 @@
 package com.wehightech.bbl
 
-import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
-
+import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class WebfluxFunctionalApp
+class ReactiveKotlinApplication
 
 fun main(args: Array<String>) {
-    SpringApplication.run(WebfluxFunctionalApp::class.java, *args)
+    runApplication<ReactiveKotlinApplication>(*args)
 }
