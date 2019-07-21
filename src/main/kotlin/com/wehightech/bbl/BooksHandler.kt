@@ -1,22 +1,17 @@
 package com.wehightech.bbl
 
-import org.springframework.data.annotation.Id
-import org.springframework.data.mongodb.core.mapping.Document
-import org.springframework.data.repository.reactive.ReactiveCrudRepository
 import org.springframework.stereotype.Component
-import org.springframework.stereotype.Repository
-import org.springframework.web.reactive.function.server.*
+import org.springframework.web.reactive.function.server.ServerRequest
+import org.springframework.web.reactive.function.server.ServerResponse
 import org.springframework.web.reactive.function.server.ServerResponse.ok
+import org.springframework.web.reactive.function.server.body
+import org.springframework.web.reactive.function.server.bodyToMono
+import org.springframework.web.reactive.function.server.bodyToServerSentEvents
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import reactor.core.publisher.toMono
 import java.time.Duration
 
-
-@Document
-data class Book(@Id val id: String,
-                val name: String,
-                val isbn: String?)
 
 @Component
 class BooksHandler(private val repository: BookRepository) {
@@ -39,9 +34,4 @@ class BooksHandler(private val repository: BookRepository) {
 
         return ok().body(repository.saveAll(book).toMono())
     }
-}
-
-@Repository
-interface BookRepository : ReactiveCrudRepository<Book, String> {
-    fun findByName(name: String): Mono<Book>
 }

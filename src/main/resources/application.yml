@@ -4,9 +4,3 @@ server:
 spring:
   main:
     allow-bean-definition-overriding: true
-
-#spring.data.mongodb.database=testdb
-#spring.data.mongodb.username=admin
-#spring.data.mongodb.password=password
-#spring.data.mongodb.host=localhost
-#spring.data.mongodb.port=27017
