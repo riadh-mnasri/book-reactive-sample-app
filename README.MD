@@ -1,4 +1,3 @@
-## Help
 # Run Mongo Database
 ```
 docker run --name book-mongo -d -p 27017:27017 mongo:latest
@@ -24,8 +23,8 @@ startup_log
 ```
 
 # Run project
-Run the spring boot main class ```ReactiveKotlinApplication```
-Or Launch
+- Run the spring boot main class ```ReactiveKotlinApplication```
+- Or Launch
 ```
 mvn spring-boot run
 ```
